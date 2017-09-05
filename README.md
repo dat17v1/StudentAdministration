@@ -8,7 +8,7 @@ Eksemplerne fra undervisningen i Spring MVC på 2. semester
 
 Resultatet skulle gerne se nogenlunde sådan ud (- knapperne, som vi kommer til senere).
 
-![]()
+![Students](https://github.com/dat17v1/2_05_user_interface_iii/blob/master/snippets/Studentfront.png)
 
 
 
