@@ -1,8 +1,9 @@
 # StudentAdministration
 Eksemplerne fra undervisningen i Spring MVC på 2. semester
 
+<hr>
 
-# Løsningen til først opgave
+## Løsningen til først opgave
 * Se i branch: ["firstassignmentsolution"](https://github.com/dat17v1/StudentAdministration/tree/firstassignmentsolution)
 ## Jeres første opgave
 * Lav et nyt projekt og kald det _"StudentAdministartion"_
