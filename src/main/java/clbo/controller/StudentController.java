@@ -24,12 +24,12 @@ public class StudentController {
     }
 
     @GetMapping("create")
-    public String create()
-    {
+    public String create() {
         // add one student to arraylist.
         // Here it is hard coded. Later we will add this dynamically
 
-        students.add(new Student("1", "Claus", "Bove", new Date(2210, 10, 10), "101010-1111"));
+        String index = Integer.toString(students.size() + 1);
+        students.add(new Student(index, "Claus", "Bove", new Date(2010, 10, 10), "101010-1111"));
         return "create";
     }
 }
