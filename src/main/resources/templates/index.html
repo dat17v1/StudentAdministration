@@ -23,7 +23,7 @@
         <td th:text="${student.studentId}"/>
         <td th:text="${student.firstName}"/>
         <td th:text="${student.lastName}"/>
-        <td th:text="${#dates.format(student.enrollmentDate, 'd MMMM yyyy')}"/> <!-- http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#reformatting-dates-in-our-home-page -->
+        <td th:text="${student.enrollmentDate}"/> <!-- http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#reformatting-dates-in-our-home-page -->
         <td th:text="${student.cpr}"/>
     </tr>
 </table>
