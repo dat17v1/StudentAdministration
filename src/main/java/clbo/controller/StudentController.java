@@ -1,10 +1,12 @@
 package clbo.controller;
 
+import clbo.model.entities.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by clbo on 06/09/2017.
@@ -19,5 +21,15 @@ public class StudentController {
     public String index(Model model) {
         model.addAttribute("stu", students);
         return "index";
+    }
+
+    @GetMapping("create")
+    public String create()
+    {
+        // add one student to arraylist.
+        // Here it is hard coded. Later we will add this dynamically
+
+        students.add(new Student("1", "Claus", "Bove", new Date(2210, 10, 10), "101010-1111"));
+        return "create";
     }
 }

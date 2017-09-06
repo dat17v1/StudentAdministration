@@ -1,6 +1,9 @@
 # StudentAdministration
 Eksemplerne fra undervisningen i Spring MVC på 2. semester
 
+
+# Løsningen til først opgave
+* Se i branch: ["firstassignmentsolution"](https://github.com/dat17v1/StudentAdministration/tree/firstassignmentsolution)
 ## Jeres første opgave
 * Lav et nyt projekt og kald det _"StudentAdministartion"_
 * lav en StudentController, med en index metode der returnerer en liste af studerende til View´et
