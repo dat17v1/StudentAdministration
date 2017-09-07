@@ -20,7 +20,7 @@ public class StudentController {
     @GetMapping("/")
     public String index(Model model) {
 
-        students.add(new Student("1", "Claus", "Bove", new Date(2010, 12, 01), "221070-9999"));
+        students.add(new Student("1", "Claus", "Bove", new Date(10, 12, 01), "221070-9999"));
 
         model.addAttribute("stu", students);
         return "index";
