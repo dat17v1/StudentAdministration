@@ -4,6 +4,7 @@ import clbo.model.entities.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,13 +24,19 @@ public class StudentController {
         return "index";
     }
 
-    @GetMapping("create")
-    public String create() {
+    @GetMapping("/create")
+    public String create(Model model) {
         // add one student to arraylist.
         // Here it is hard coded. Later we will add this dynamically
+        //String index = Integer.toString(students.size() + 1);
 
-        String index = Integer.toString(students.size() + 1);
-        students.add(new Student(index, "Claus", "Bove", new Date(2010, 10, 10), "101010-1111"));
+        model.addAttribute("student", new Student());
+        return "create";
+    }
+
+    @PostMapping("/create")
+    public String create(){
+
         return "create";
     }
 }

@@ -13,6 +13,8 @@ public class Student {
     private Date enrollmentDate;
     private String cpr;
 
+    public Student() {}
+
     public Student(String studentId, String firstName, String lastName, Date enrollmentDate, String cpr) {
         this.studentId = studentId;
         this.firstName = firstName;
