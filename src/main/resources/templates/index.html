@@ -6,5 +6,24 @@
 <body>
     <h1>Students</h1>
 <p>Students enrolled at KEA</p>
+
+<table>
+    <tr>
+        <td>Student ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Enrollment Date</td>
+        <td>CPR</td>
+    </tr>
+    <tr th:each="student : ${stu}">
+        <td th:text="${student.studentId}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.enrollmentDate}"></td>
+        <td th:text="${student.cpr}"></td>
+    </tr>
+</table>
+
+
 </body>
 </html>
