@@ -1,9 +1,13 @@
 package clbo.controller;
 
 import clbo.model.entities.Student;
+import clbo.model.repositories.IStudentRepository;
+import clbo.model.repositories.StudentArrayRepository;
+import clbo.model.repositories.StudentToFileRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -18,25 +22,34 @@ public class StudentController {
 
     ArrayList<Student> students = new ArrayList<Student>();
 
+    IStudentRepository studentRepo = new StudentArrayRepository();
     @GetMapping("/")
     public String index(Model model) {
+
+        students = studentRepo.readAll();
         model.addAttribute("stu", students);
+
         return "index";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        // add one student to arraylist.
-        // Here it is hard coded. Later we will add this dynamically
-        //String index = Integer.toString(students.size() + 1);
-
         model.addAttribute("student", new Student());
         return "create";
     }
 
     @PostMapping("/create")
-    public String create(){
+    public String create(@ModelAttribute Student stu){
 
+        //students.add(stu);
+
+        studentRepo.create(stu);
         return "create";
     }
 }
+
+
+
+// add one student to arraylist.
+// Here it is hard coded. Later we will add this dynamically
+//String index = Integer.toString(students.size() + 1);
