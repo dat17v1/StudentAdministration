@@ -20,15 +20,22 @@ import java.util.Date;
 @Controller
 public class StudentController {
 
-    ArrayList<Student> students = new ArrayList<Student>();
+    ArrayList<Student> students;
 
-    IStudentRepository studentRepo = new StudentArrayRepository();
+    StudentArrayRepository studentRepo = new StudentArrayRepository();
+
+    Object student = new Student();
+
     @GetMapping("/")
     public String index(Model model) {
 
+        Integer xxx = 666;
+        String xxxx = xxx.toString();
+
+        //model.addAttribute("intnavn", xxx);
+
         students = studentRepo.readAll();
         model.addAttribute("stu", students);
-
         return "index";
     }
 
