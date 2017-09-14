@@ -29,7 +29,7 @@ public class StudentToFileRepository implements IStudentRepository {
 
             while(scan.hasNext())
             {
-                stu.add(new Student (scan.next(), scan.next()));
+                //stu.add(new Student (scan.next(), scan.next()));
             }
 
         } catch (FileNotFoundException e) {

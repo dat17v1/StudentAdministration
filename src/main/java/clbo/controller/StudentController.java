@@ -6,9 +6,7 @@ import clbo.model.repositories.StudentArrayRepository;
 import clbo.model.repositories.StudentToFileRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +30,17 @@ public class StudentController {
         return "index";
     }
 
+    @GetMapping("/details")
+    public String details(@RequestParam("studentId") String studentId)
+    {
+        // opgaven
+        // overføre en student med studentid = parameteret.
+        // til details.html og skrive al info on den studerende ud på siden
+        System.out.println(studentId);
+        return "details";
+    }
+
+
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("student", new Student());
@@ -44,7 +53,7 @@ public class StudentController {
         //students.add(stu);
 
         studentRepo.create(stu);
-        return "create";
+        return "redirect:/";
     }
 }
 
