@@ -19,8 +19,9 @@ import java.util.Date;
 public class StudentController {
 
     ArrayList<Student> students = new ArrayList<Student>();
-
     IStudentRepository studentRepo = new StudentArrayRepository();
+
+    // READ ALL
     @GetMapping("/")
     public String index(Model model) {
 
@@ -30,17 +31,18 @@ public class StudentController {
         return "index";
     }
 
+    // READ
     @GetMapping("/details")
     public String details(@RequestParam("studentId") String studentId)
     {
-        // opgaven
-        // overføre en student med studentid = parameteret.
-        // til details.html og skrive al info on den studerende ud på siden
+        // Opgave:
+        // overfør en student med studentid = parameteret.
+        // til details.html og skriv al info on den studerende ud på siden
         System.out.println(studentId);
         return "details";
     }
 
-
+    // CREATE
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("student", new Student());
@@ -55,6 +57,12 @@ public class StudentController {
         studentRepo.create(stu);
         return "redirect:/";
     }
+
+    // UPDATE
+    // LAV en update metode
+
+    // DELETE
+    // Lav en delete metode
 }
 
 
