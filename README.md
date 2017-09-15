@@ -5,6 +5,9 @@ Eksemplerne fra undervisningen i Spring MVC på 2. semester
 
 ## Lav: Details, Update, Delete funktionalitet
 
+Til næste gang, tirsdag d. 19.9 må i meget gerne have gjort et i hærdigt forsøg på at få Details. Update og Delete fuktionaliteten til at virke. Vi snakker om det i klassen.
+Når dette er på plads kan vi komme videre med Database delen af undervisningen.
+
 ````
     // READ
         @GetMapping("/details")
