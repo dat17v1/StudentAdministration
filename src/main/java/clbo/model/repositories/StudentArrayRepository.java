@@ -15,7 +15,8 @@ public class StudentArrayRepository implements IStudentRepository {
 
     @Override
     public void create(Student st) {
-        st.setStudentId("1");
+        Integer sizeOfArray = students.size() + 1;
+        st.setStudentId(sizeOfArray.toString());
         students.add(st);
     }
 

@@ -6,9 +6,7 @@ import clbo.model.repositories.StudentArrayRepository;
 import clbo.model.repositories.StudentToFileRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,12 +18,11 @@ import java.util.Date;
 @Controller
 public class StudentController {
 
-    ArrayList<Student> students;
-
+    ArrayList<Student> students = new ArrayList<Student>();
     StudentArrayRepository studentRepo = new StudentArrayRepository();
+    //IStudentRepository studentRepo = new StudentArrayRepository();
 
-    Object student = new Student();
-
+    // READ ALL
     @GetMapping("/")
     public String index(Model model) {
 
@@ -39,6 +36,18 @@ public class StudentController {
         return "index";
     }
 
+    // READ
+    @GetMapping("/details")
+    public String details(@RequestParam("studentId") String studentId)
+    {
+        // Opgave:
+        // overfør en student med studentid = parameteret.
+        // til details.html og skriv al info on den studerende ud på siden
+        System.out.println(studentId);
+        return "details";
+    }
+
+    // CREATE
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("student", new Student());
@@ -51,8 +60,14 @@ public class StudentController {
         //students.add(stu);
 
         studentRepo.create(stu);
-        return "create";
+        return "redirect:/";
     }
+
+    // UPDATE
+    // LAV en update metode
+
+    // DELETE
+    // Lav en delete metode
 }
 
 
