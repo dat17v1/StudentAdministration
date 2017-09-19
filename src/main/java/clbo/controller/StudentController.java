@@ -37,8 +37,7 @@ public class StudentController {
         // Opgave:
         // overfør en student med studentid = parameteret.
         // til details.html og skriv al info on den studerende ud på siden
-        //System.out.println(studentId);
-
+        
         model.addAttribute("stu", studentRepo.read(studentId));
         return "details";
     }
