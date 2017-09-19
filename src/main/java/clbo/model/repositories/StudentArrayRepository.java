@@ -27,7 +27,15 @@ public class StudentArrayRepository implements IStudentRepository {
 
     @Override
     public Student read(String id) {
+
+        for (Student st: students) {
+            if(st.getStudentId().equals(id)){
+                return st;
+            }
+        }
+
         return null;
+
     }
 
     @Override

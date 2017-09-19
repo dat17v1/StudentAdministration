@@ -20,17 +20,11 @@ public class StudentController {
 
     ArrayList<Student> students = new ArrayList<Student>();
     StudentArrayRepository studentRepo = new StudentArrayRepository();
-    //IStudentRepository studentRepo = new StudentArrayRepository();
+   // IStudentRepository studentRepo = new StudentArrayRepository();
 
     // READ ALL
     @GetMapping("/")
     public String index(Model model) {
-
-        Integer xxx = 666;
-        String xxxx = xxx.toString();
-
-        //model.addAttribute("intnavn", xxx);
-
         students = studentRepo.readAll();
         model.addAttribute("stu", students);
         return "index";
@@ -38,12 +32,14 @@ public class StudentController {
 
     // READ
     @GetMapping("/details")
-    public String details(@RequestParam("studentId") String studentId)
+    public String details(@RequestParam("studentId") String studentId, Model model)
     {
         // Opgave:
         // overfør en student med studentid = parameteret.
         // til details.html og skriv al info on den studerende ud på siden
-        System.out.println(studentId);
+        //System.out.println(studentId);
+
+        model.addAttribute("stu", studentRepo.read(studentId));
         return "details";
     }
 
