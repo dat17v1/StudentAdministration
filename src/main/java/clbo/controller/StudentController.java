@@ -30,18 +30,6 @@ public class StudentController {
         return "index";
     }
 
-    // READ
-    @GetMapping("/details")
-    public String details(@RequestParam("studentId") String studentId, Model model)
-    {
-        // Opgave:
-        // overfør en student med studentid = parameteret.
-        // til details.html og skriv al info on den studerende ud på siden
-        
-        model.addAttribute("stu", studentRepo.read(studentId));
-        return "details";
-    }
-
     // CREATE
     @GetMapping("/create")
     public String create(Model model) {
@@ -58,11 +46,44 @@ public class StudentController {
         return "redirect:/";
     }
 
-    // UPDATE
-    // LAV en update metode
+    // READ
+    @GetMapping("/details")
+    public String details(@RequestParam("studentId") String studentId, Model model)
+    {
+        model.addAttribute("stu", studentRepo.read(studentId));
+        return "details";
+    }
 
     // DELETE
-    // Lav en delete metode
+    @GetMapping("/delete")
+    public String delete(@RequestParam("studentId") String studentId, Model model){
+        //model.addAttribute("stu", studentRepo.delete(studentId));
+        studentRepo.delete(studentId);
+        return "redirect:/";
+    }
+
+
+
+
+
+
+
+
+
+
+
+    @PostMapping("/details")
+    public String delete()
+    {
+        return "";
+    }
+
+
+
+
+
+    // UPDATE
+    // LAV en update metode
 }
 
 

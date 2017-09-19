@@ -10,5 +10,13 @@
 
    <div th:text="${stu.firstName}">test</div>
 
+    <form th:action="@{/delete}" method="post" th:object="${student}"> <!-- student = @ModelAttribute -->
+
+        <input type="text" th:field="*{stu.studentId}" />
+
+        <input type="submit" value="Send" />
+
+    </form>
+
 </body>
 </html>

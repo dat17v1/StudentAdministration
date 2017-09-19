@@ -38,13 +38,16 @@ public class StudentArrayRepository implements IStudentRepository {
 
     }
 
-    @Override
-    public void update(Student st) {
 
-    }
 
     @Override
     public void delete(String id) {
+        Student st = read(id);
+        students.remove(st);
+    }
+
+    @Override
+    public void update(Student st) {
 
     }
 }
