@@ -17,6 +17,9 @@ public class StudentArrayRepository implements IStudentRepository {
     public void create(Student st) {
         Integer sizeOfArray = students.size() + 1;
         st.setStudentId(sizeOfArray.toString());
+
+        // sizeOfArray om det eksisterer i arraylistens id´er
+
         students.add(st);
     }
 
@@ -33,12 +36,8 @@ public class StudentArrayRepository implements IStudentRepository {
                 return st;
             }
         }
-
         return null;
-
     }
-
-
 
     @Override
     public void delete(String id) {
@@ -47,7 +46,11 @@ public class StudentArrayRepository implements IStudentRepository {
     }
 
     @Override
-    public void update(Student st) {
+    public void update(Student st) { // st
+        // gamle studerende
+        //Student stu = read(st.getStudentId());
+        delete(st.getStudentId());
+        students.add(st);
 
     }
 }

@@ -56,38 +56,27 @@ public class StudentController {
 
     // DELETE
     @GetMapping("/delete")
-    public String delete(@RequestParam("studentId") String studentId, Model model){
-        //model.addAttribute("stu", studentRepo.delete(studentId));
+    public String delete(@RequestParam("studentId") String studentId){
         studentRepo.delete(studentId);
+        return "redirect:/";
+    }
+
+    // UPDATE
+    // LAV en update metode
+    @GetMapping("/update")
+    public String update(@RequestParam("studentId") String studentId, Model model){
+        model.addAttribute("stu", studentRepo.read(studentId));
+        return "update";
+    }
+    @PostMapping("/update")
+    public String update(@ModelAttribute Student stu)
+    {
+        studentRepo.update(stu);
         return "redirect:/";
     }
 
 
 
 
-
-
-
-
-
-
-
-    @PostMapping("/details")
-    public String delete()
-    {
-        return "";
-    }
-
-
-
-
-
-    // UPDATE
-    // LAV en update metode
 }
 
-
-
-// add one student to arraylist.
-// Here it is hard coded. Later we will add this dynamically
-//String index = Integer.toString(students.size() + 1);
