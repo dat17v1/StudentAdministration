@@ -19,6 +19,11 @@ public class Student {
 
     public Student() {}
 
+    public Student(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Student(String studentId, String firstName, String lastName, Date enrollmentDate, String cpr) {
         this.studentId = studentId;
         this.firstName = firstName;

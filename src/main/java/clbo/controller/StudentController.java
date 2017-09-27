@@ -3,7 +3,10 @@ package clbo.controller;
 import clbo.model.entities.Student;
 import clbo.model.repositories.IStudentRepository;
 import clbo.model.repositories.StudentArrayRepository;
+import clbo.model.repositories.StudentRepository;
 import clbo.model.repositories.StudentToFileRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +23,16 @@ public class StudentController {
 
     ArrayList<Student> students = new ArrayList<Student>();
     StudentArrayRepository studentRepo = new StudentArrayRepository();
-   // IStudentRepository studentRepo = new StudentArrayRepository();
+    /* @Autowired
+    JdbcTemplate jdbc; */
+    @Autowired
+    IStudentRepository studentRepo2 = new StudentRepository();
+
 
     // READ ALL
     @GetMapping("/")
     public String index(Model model) {
+        studentRepo2.readAll();
         students = studentRepo.readAll();
         model.addAttribute("stu", students);
         return "index";
@@ -33,6 +41,9 @@ public class StudentController {
     // CREATE
     @GetMapping("/create")
     public String create(Model model) {
+        //jdbc.execute("insert into students(first_name,last_name, enrollmentdate, cpr)values('ole','Bove', '2010-10-10', '221070-3333')");
+
+       //studentRepo2.create();
         model.addAttribute("student", new Student());
         return "create";
     }
@@ -42,8 +53,9 @@ public class StudentController {
 
         //students.add(stu);
 
-        studentRepo.create(stu);
-        return "redirect:/";
+        studentRepo2.create(stu);
+        //return "redirect:/";
+        return "create";
     }
 
     // READ
