@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Student {
 
-    private String studentId;
+    private int studentId;
     private String firstName;
     private String lastName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -24,7 +24,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Student(String studentId, String firstName, String lastName, Date enrollmentDate, String cpr) {
+    public Student(int studentId, String firstName, String lastName, Date enrollmentDate, String cpr) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,11 +32,11 @@ public class Student {
         this.cpr = cpr;
     }
 
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 
@@ -70,5 +70,16 @@ public class Student {
 
     public void setCpr(String cpr) {
         this.cpr = cpr;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", enrollmentDate=" + enrollmentDate +
+                ", cpr='" + cpr + '\'' +
+                '}';
     }
 }

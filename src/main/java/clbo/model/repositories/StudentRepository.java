@@ -24,30 +24,21 @@ public class StudentRepository implements IStudentRepository {
     private ArrayList<Student> students;
     private SqlRowSet rs;
 
-
-
-
-    public void create() {
-        jdbc.execute("insert into students(first_name,last_name, enrollmentdate, cpr)values('Troels666','Bent', '2010-10-10', '221070-3333')");
+    public StudentRepository() {
+        students = new ArrayList<Student>();
     }
 
     public void create(Student st) {
-        jdbc.execute("insert into students(first_name,last_name, enrollmentdate, cpr)values('Claus666','Bove', '2010-10-10', '221070-3333')");
+        jdbc.update("insert into students(first_name,last_name, enrollmentdate, cpr)values('Claus666','Bove', '2010-10-10', '221070-3333')");
     }
-
 
     public ArrayList<Student> readAll() {
 
+        students.clear();
         rs = jdbc.queryForRowSet("select * from students");
         while (rs.next()) {
 
-            System.out.println(rs.getInt("student_id") + " " +
-                    rs.getString("first_name") + " " +
-                    rs.getString("last_name") + " " +
-                    rs.getDate("enrollmentdate") + " " +
-                    rs.getString("cpr"));
-
-            students.add(new Student(Integer.toString(rs.getInt("student_id")),
+            students.add(new Student(rs.getInt("student_id"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
                     rs.getDate("enrollmentdate"),
@@ -58,17 +49,38 @@ public class StudentRepository implements IStudentRepository {
     }
 
 
-    public Student read(String id) {
-        return null;
+    public Student read(int id) {
+       // Student student = jdbc.queryForObject("SELECT * FROM students where student_id =" + id + "", Student.class);
+       // System.out.println(student.toString());
+
+        rs = jdbc.queryForRowSet("SELECT * FROM students where student_id ='" + id + "'");
+        while (rs.next()) {
+
+            return  new Student(rs.getInt("student_id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getDate("enrollmentdate"),
+                    rs.getString("cpr"));
+
+        }
+
+        return new Student();
     }
 
 
     public void update(Student st) {
-
+        // TODO: return type bool
+        int result = jdbc.update("UPDATE students SET " +
+                "first_name ='"+ st.getFirstName() +"' , " +
+                "last_name='"+ st.getLastName() +"' ," +
+                "enrollmentdate='"+ st.getEnrollmentDate() +"' ," +
+                "cpr='"+ st.getCpr() +"' WHERE student_id = '"+ st.getStudentId() +"'");
     }
 
 
-    public void delete(String id) {
+    public void delete(int id) {
+        // TODO: return type bool
+        int result = jdbc.update("DELETE FROM students WHERE student_id='" + id + "'");
 
     }
 

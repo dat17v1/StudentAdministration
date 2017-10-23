@@ -12,12 +12,12 @@ public interface IStudentRepository {
     public void create(Student st);
     // Read
     public ArrayList<Student> readAll();
-    public Student read(String id);
+    public Student read(int id);
 
     // Update
     public void update(Student st);
 
     // Delete
-    public void delete(String id);
+    public void delete(int id);
 
 }

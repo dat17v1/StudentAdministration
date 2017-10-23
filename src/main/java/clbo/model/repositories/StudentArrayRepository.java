@@ -16,7 +16,7 @@ public class StudentArrayRepository implements IStudentRepository {
     @Override
     public void create(Student st) {
         Integer sizeOfArray = students.size() + 1;
-        st.setStudentId(sizeOfArray.toString());
+        st.setStudentId(sizeOfArray);
 
         // sizeOfArray om det eksisterer i arraylistens id´er
 
@@ -29,10 +29,10 @@ public class StudentArrayRepository implements IStudentRepository {
     }
 
     @Override
-    public Student read(String id) {
+    public Student read(int id) {
 
         for (Student st: students) {
-            if(st.getStudentId().equals(id)){
+            if(st.getStudentId() == id){
                 return st;
             }
         }
@@ -40,7 +40,7 @@ public class StudentArrayRepository implements IStudentRepository {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         Student st = read(id);
         students.remove(st);
     }
@@ -51,6 +51,6 @@ public class StudentArrayRepository implements IStudentRepository {
         //Student stu = read(st.getStudentId());
         delete(st.getStudentId());
         students.add(st);
-
-    }
+       // students.set(students.indexOf(st + 1, st))
+}
 }
